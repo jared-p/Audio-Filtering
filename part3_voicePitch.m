@@ -1,5 +1,4 @@
-
-%% Part 2.1: Capture Audio
+%% Part 3.2: Voice Pitch Recorder
 clear all
 close all
 % @params
@@ -21,16 +20,10 @@ audio = getaudiodata(recorder);
 % play(recorder);
 
 % Save Audio Clip
-save('audioclip.mat','audio','Fs','bits','channels', 'recordTime', '-append');
+save('voiceclip.mat','audio','Fs','bits','channels', 'recordTime', '-append');
 
-%% Part 2.2: Analyze Audio
+%% Part 3.2: Voice Pitch Analyzer
 clear all
 load audioclip.mat;
-N = recordTime*Fs;
-X_f = fft(audio);
-mag = abs(X_f);
-f = linspace(-1/2*Fs,1/2*Fs, N);
-figure
-semilogy(f, fftshift(mag)), grid on, xlabel('Frequency [Hz]'), ylabel('Magnitude of Audio Signal [dB]');
-
-
+pitch = pitch(audio, Fs);
+plot(pitch), xlabel('Frame'), ylabel('Pitch');
