@@ -26,17 +26,16 @@ save('audioclip.mat','audio','Fs','bits','channels', 'recordTime', '-append');
 clear all
 load audioclip.mat;
 N = recordTime*Fs;
-X_f = fft(audio);
-mag = abs(X_f);
-plot(mag)
+X_f = fft(audio); %freq domain of signal
+mag = abs(X_f); %maginuted of ft signal
+magdb = 10*log(mag); %db scale of the signal
 f = linspace(-1/2*Fs,1/2*Fs, N);
 figure
-semilogy(f, fftshift(mag)), grid on, xlabel('Frequency [Hz]'), ylabel('Magnitude of Audio Signal [dB]');
-
+semilogy(f, fftshift(magdb), 'LineWidth', 2, 'color', 'b'), grid on, xlabel('Frequency [Hz]'), ylabel('Magnitude of Audio Signal [dB]');
+hold on
 [maxVal, freq] = max(mag);
-fundamentalFreq = freq/recordTime
-peak = findpeaks(mag)
-
+fundamentalFreq = freq/recordTime; %fund freq. is the maximum on the graph.
+xline(fundamentalFreq, 'LineWidth', 1, 'color', 'r');
 %% Part 3.2: Voice Pitch Recorder
 clear all
 close all
