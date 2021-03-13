@@ -16,8 +16,8 @@ disp('Record begin');
 recordblocking(recorder, recordTime);
 disp('Record finish');
 audio = getaudiodata(recorder);
-% plot([1:length(audio)]/Fs,audio), xlabel('time (s)'), ylabel('Amplitude');
-% play(recorder);
+ plot([1:length(audio)]/Fs,audio), xlabel('time (s)'), ylabel('Amplitude');
+ play(recorder);
 
 % Save Audio Clip
 save('audioclip.mat','audio','Fs','bits','channels', 'recordTime', '-append');
