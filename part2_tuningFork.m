@@ -22,7 +22,7 @@ audio = getaudiodata(recorder);
 % Save Audio Clip
 save('audioclip.mat','audio','Fs','bits','channels', 'recordTime', '-append');
 
-%% Part 2.2: Analyze Audio
+%% Part 2.2: Analyze Audio a
 clear all
 load audioclip.mat;
 N = recordTime*Fs;
