@@ -24,6 +24,7 @@ save('voiceclip.mat','audio','Fs','bits','channels', 'recordTime', '-append');
 
 %% Part 3.2: Voice Pitch Analyzer
 clear all
-load audioclip.mat;
-pitch = pitch(audio, Fs);
+close all
+load audioclip.mat; % change to voiceclip.mat once recorder
+pitch = pitch(audio, Fs); % pitch is continuous plot??
 plot(pitch), xlabel('Frame'), ylabel('Pitch');
