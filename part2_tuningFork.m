@@ -1,7 +1,7 @@
 %% Part 2.1: Capture Audio
 clear all
 close all
-% @params
+% @params add line
 devinfo = audiodevinfo;
 speaker = devinfo.output(1).ID;
 mic = devinfo.input(2).ID;
